@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.block {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	
+	<p>Wprowadź ilość cyfr do posortowania</p>
+	<input type="number" id="ilosc">
+	<button id="zatwierdz">Zatwierdź</button>
+
+	
+	<div id="container">
+
+	</div>
+
+	<div id="display"></div>
+	
+</body>
+<script>
+	
+
+	generujInputy = () => {
+		n = ilosc.value
+
+		document.body.insertBefore(document.createElement("span"), container)
+		document.querySelector('span').innerHTML = '<br /><br />Wprowadź cyfry do posortowania <br /><br />'
+
+
+		for (let i = 0; i < n; i++) {
+			let el = document.createElement("input");
+
+			el.setAttribute('type', 'number');
+			el.setAttribute('id', i);
+			el.setAttribute("class", "block")
+
+			container.appendChild(el)
+		}
+
+		let btn = document.createElement("button");
+		btn.setAttribute('id', 'sortuj');
+		btn.innerText = "sortuj";
+		container.insertAdjacentElement('afterend', btn)
+		btn.addEventListener('click', sortuj)
+	}
+	//=========================
+
+	sortuj = () => {
+		let wartosci = container.children,
+			tablica = [];
+
+		[...wartosci].forEach( element => {
+			tablica.push(parseInt(element.value))
+		})
+
+		for (let licznik = 1; licznik <= n-1; licznik++) {
+
+			for (let element_tablicy = 0; element_tablicy <= n - 2; element_tablicy++) {
+
+				if (tablica[element_tablicy] > tablica[element_tablicy + 1]) {
+
+					let zmienna_pomocnicza = tablica[element_tablicy + 1];
+					tablica[element_tablicy + 1] = tablica[element_tablicy];
+					tablica[element_tablicy] = zmienna_pomocnicza;
+					console.log(tablica[element_tablicy])
+				}
+			
+			}
+		}
+
+		display.innerHTML = '<br /><br />' + tablica
+	}
+
+	let display = document.querySelector('#display'),
+		n = 0
+		ilosc = document.querySelector('#ilosc'),
+		zatwierdz = document.querySelector('#zatwierdz'),
+		container = document.querySelector('#container');
+	
+	zatwierdz.addEventListener('click', generujInputy)
+
+
+	
+
+function sortowanie() {
+	
+
+	//Zamiana elementów miejscami od mniejszego do większego
+	
+
+	console.log(a);
+	let p=document.createElement("P")
+	let t=document.createTextNode("sorting result="+a);
+	p.appendChild(t);
+	document.body.appendChild(p);
+
+}
+
+</script>
+</html>
