@@ -80,9 +80,11 @@
 
 				if (tablica[element_tablicy] > tablica[element_tablicy + 1]) {
 
-					let zmienna_pomocnicza = tablica[element_tablicy + 1];
-					tablica[element_tablicy + 1] = tablica[element_tablicy];
-					tablica[element_tablicy] = zmienna_pomocnicza;
+					// let zmienna_pomocnicza = tablica[element_tablicy + 1];
+					// tablica[element_tablicy + 1] = tablica[element_tablicy];
+					// tablica[element_tablicy] = zmienna_pomocnicza;
+					//ES6
+					[tablica[element_tablicy], tablica[element_tablicy + 1]] = [tablica[element_tablicy + 1], tablica[element_tablicy]]
 					console.log(tablica[element_tablicy])
 				}
 			
